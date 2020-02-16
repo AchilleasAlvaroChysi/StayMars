@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :reviews
 
   get '/search', to: 'units#search'
-  post '/auth/login', to: 'authentication#login'
+  post '/auth', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 end
