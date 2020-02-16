@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    @reviews = Unit.find(params[:unit_id]).reviews
     render json: @reviews, status: :ok
   end
 

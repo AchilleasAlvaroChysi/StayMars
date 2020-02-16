@@ -49,3 +49,10 @@ gem "jwt", "~> 2.2"
 gem "faker", "~> 2.10"
 
 gem "kaminari", "~> 1.2"
+
+gem "rspec-rails", "~> 3.9"
+
+
+gem "database_cleaner-active_record", "~> 1.8"
+
+gem "factory_bot_rails", "~> 5.1"
