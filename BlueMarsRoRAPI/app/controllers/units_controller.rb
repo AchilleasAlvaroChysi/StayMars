@@ -5,7 +5,7 @@ class UnitsController < ApplicationController
         else 
           @units = Unit.order(params[:sort]).page(params[:page]).per(15)
         end
-        render json: {units: @units, meta: { total: Unit.page.total_pages, records: Unit.count}}, status: :ok
+        render json: {units: @units, meta: { current: Unit.page(params[:page]).current_page ,total: Unit.page.total_pages, records: Unit.count}}, status: :ok
       end
     
       def show
