@@ -25,6 +25,15 @@ end
         name: Faker::Name.name,
         username: "user#{i}",
         email: "user#{i}@example.com",
-        password: "1234"
+        password: "123456"
+    )
+end
+
+50.times do |i|
+    Review.create(
+        body: Faker::Lorem.paragraph,
+        score: [0,1,2,3,4,5].sample,
+        user_id: User.all.ids.sample,
+        unit_id: Unit.all.ids.sample
     )
 end
