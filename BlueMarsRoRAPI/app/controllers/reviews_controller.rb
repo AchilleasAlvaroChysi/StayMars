@@ -10,8 +10,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @unit = Unit.find(params[:unit_id])
+    @user = User.find(params[:user_id])
     @review = Review.new(review_params)
+
     if @review.save
+      @unit.addReview(@review)
       render json: @review , status: :created
     else
       render json: {errors: @review.errors.full_messages}, status: :unprocessable_entity

@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h2> Welcome </h2>
     <div class = "grid-container" id = "units">
-      <div v-for= "unit in units" :unit="unit" :key="unit.id" class="grid-item">
-        <h3><router-link to= "HelloWorld">{{unit.title}}</router-link></h3>
-        <span class = "fa fa-map-marker">{{unit.region}}</span>
-        <font-awesome-icon icon="fas fa-map-marker" />
-        <img :src="getImgUrl(unit.image)" v-bind:alt="unit.image">
+      <div v-for= "unit in units" :unit="unit" :key="unit.id" >
+        <div class="grid-item">
+          <h3 class= "grid-item-title">{{unit.title}}</h3>
+          <b>{{unit.score}}<br> {{unit.price}}$ </b>
+          <img class= "grid-item-image" :src="getImgUrl(unit.image)" v-bind:alt="unit.image">
+          <p class = "description"><b>Description: </b><em>{{unit.description.substring(0, 200)}}...</em></p>
+          <p class = "description"><b>Cancelation Policy: </b><em>{{unit.cp.substring(0, 100)}}</em></p>
+          <router-link :to="{ name: 'Reviews', params: { id: unit.id, unit: unit } }">{{unit.id}}</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +32,6 @@ export default {
         this.units = response.data['units']
         this.meta = response.data['meta']
         this.currentPage = response.data['meta']['current'].toString()
-        console.log(response.data['units'] instanceof Array)
       })
       .catch(response => function (response) {
         console.log(response.data)
@@ -67,40 +69,41 @@ export default {
 }
 </script>
 <style>
-.grid-container {
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-    max-width: 100%;
-    display: grid;
-}
-.grid-item{
-    box-shadow: 2px 6px 10px 0 rgba(0,0,0,0.1);
-    padding: 1%;
-    margin: 2%;
-    text-align: center;
-    border-radius: 25px;
-}
-.grid-item > img{
-  max-width: 90%;
-  max-height: 90%;
-}
-.grid-item > small{
-    font-weight: bold;
-}
-.grid-item:hover{
-    box-shadow: 4px 10px 18px 0 rgba(0,0,0,0.5);
-}
-.checked {
-    color: orange;
-}
+  .grid-container {
+      grid-template-columns: auto auto auto;
+      grid-auto-rows: 1fr;
+      padding: 10px;
+      max-width: 100%;
+      display: grid;
+  }
+  .grid-item{
+      box-shadow: 2px 6px 10px 0 rgba(0,0,0,0.1);
+      padding: 1%;
+      margin: 2%;
+      text-align: center;
+      border-radius: 25px;
+  }
+  .grid-item > img{
+    max-width: 90%;
+    max-height: 90%;
+  }
+  .grid-item > small{
+      font-weight: bold;
+  }
+  .grid-item:hover{
+      box-shadow: 4px 10px 18px 0 rgba(0,0,0,0.5);
+  }
+  .description {
+    text-align: center
+  }
 
-details {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.button{
-  float: left;
-  float: inline-start;
-}
+  details {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+  }
+  .button{
+    float: left;
+    float: inline-start;
+  }
 </style>
