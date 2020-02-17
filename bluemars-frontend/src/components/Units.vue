@@ -4,11 +4,12 @@
       <div v-for= "unit in units" :unit="unit" :key="unit.id" >
         <div class="grid-item">
           <h3 class= "grid-item-title">{{unit.title}}</h3>
-          <b>{{unit.score}}<br> {{unit.price}}$ </b>
+          <p><b>{{unit.score}} <span class = "fa fa-star"></span></b></p>
+          <p><b>{{unit.price}}$ </b></p>
           <img class= "grid-item-image" :src="getImgUrl(unit.image)" v-bind:alt="unit.image">
           <p class = "description"><b>Description: </b><em>{{unit.description.substring(0, 200)}}...</em></p>
           <p class = "description"><b>Cancelation Policy: </b><em>{{unit.cp.substring(0, 100)}}</em></p>
-          <router-link :to="{ name: 'Reviews', params: { id: unit.id, unit: unit } }">{{unit.id}}</router-link>
+          <router-link :to="{ name: 'Reviews', params: { id: unit.id, unit: unit } } " class = "stretched-link">More Info</router-link>
         </div>
       </div>
     </div>

@@ -3,19 +3,22 @@
     <h3>WELCOM TO REV {{id}}</h3>
     <div class="container">
       <div id = "details">
+        <h3>{{unit.title}} <em>{{unit.region}}</em></h3>
         <div class = "row">
-          <h3>{{unit.title}} <em>{{unit.region}}</em></h3>
-          <div class = "col-md-4">
+          <div class = "col-md-8">
             <img :src="getImgUrl(unit.image)" v-bind:alt="unit.image">
           </div>
           <div class = "col-md-4" id = "unit-details">
-            <p> {{unit.score}}/5  {{unit.price}}$ </p>
+            <p> {{unit.score}} <span class = "fa fa-star checked"></span></p> 
+            <p> {{unit.price}}$ </p>
             <p><b>Cancelation Policy:</b><br><em>{{unit.cp}}</em></p>
             <p><b>Description:</b><br><em>{{unit.description}}</em></p>
           </div>
         </div>
         <div v-for="review in reviews" :review= "review" :key="review.id" class="review">
-          <h4 class= "review-creator">User {{review.user_id}} said:</h4>
+          <div class = "col-md-4">
+            <h4 class= "review-creator">User {{review.user_id}} said:</h4>
+          </div>
           <p class = "review-text"><em>"{{review.body}}"</em></p>
           <em>{{review.score}}</em><small><em>{{review.created_at}}</em></small>
         </div>
@@ -62,7 +65,10 @@ export default {
 </script>
 <style>
 img{
-  max-width: 60%
+  max-width: 100%
+}
+h3{
+  text-align: center
 }
 small{
   float: right;
@@ -87,5 +93,14 @@ small{
 }
 #unit-details:hover{
   border-width: 2px 4px 4px 2px;
+}
+.review-creator{
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 5px; 
+  width: 50%;
+}
+.checked{
+  color: orange
 }
 </style>
