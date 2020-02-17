@@ -29,7 +29,7 @@ end
     )
 end
 
-50.times do |i|
+200.times do |i|
     Review.create(
         body: Faker::Lorem.paragraph,
         score: [0,1,2,3,4,5].sample,
