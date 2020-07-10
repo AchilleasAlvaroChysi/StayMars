@@ -1,4 +1,4 @@
-# blumars-frontend
+# staymars-frontend
 
 > A Vue.js project
 

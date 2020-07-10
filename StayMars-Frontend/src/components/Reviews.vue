@@ -9,7 +9,7 @@
             <img :src="getImgUrl(unit.image)" v-bind:alt="unit.image">
           </div>
           <div class = "col-md-4" id = "unit-details">
-            <p> {{unit.score}} <span class = "fa fa-star checked"></span></p> 
+            <p> {{unit.score}} <span class = "fa fa-star checked"></span></p>
             <p> {{unit.price}}$ </p>
             <p><b>Cancelation Policy:</b><br><em>{{unit.cp}}</em></p>
             <p><b>Description:</b><br><em>{{unit.description}}</em></p>
@@ -97,7 +97,7 @@ small{
 .review-creator{
   border-style: solid;
   border-width: 1px 1px 1px 1px;
-  border-radius: 5px; 
+  border-radius: 5px;
   width: 50%;
 }
 .checked{
